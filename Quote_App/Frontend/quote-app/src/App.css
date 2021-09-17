@@ -1,0 +1,24 @@
+body, html, #root,.app, .container {
+  width: 100%;
+  height: 100%;
+}
+
+.containerforLogin {
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #a0c593;
+  height: 100%;
+}
+.loginForm{
+  width: 40%;
+}
+.loginButton{
+  background-color: #00B5FF !important;
+  border-color: #00B5FF !important;
+  width: 30% !important;
+  
+}
+
