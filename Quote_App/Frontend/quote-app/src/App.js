@@ -15,13 +15,16 @@ class App extends React.Component {
         method: 'post',
         headers: {
           'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Headers": "Origin, Content-Type, Accept"
         }
       });
 
       let result = await res.json();
+      console.log('isLoggedIn result: ' + result);
 
-      if (result && result.succes) {
+      if (result && result.success) {
         UserStore.isLoggedIn = true;
         UserStore.loading = false;
         UserStore.username = result.username;
@@ -50,7 +53,7 @@ class App extends React.Component {
 
       let result = await res.json();
 
-      if (result && result.succes) {
+      if (result && result.success) {
         UserStore.isLoggedIn = false;
         UserStore.username = '';
       }
