@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
   async doLogIn(){
     console.log('login');
-    if(!this.state.username){
+    /*if(!this.state.username){
       return;
     }
     if(!this.state.password){
@@ -73,27 +73,28 @@ class LoginForm extends React.Component {
     }catch(e){
       console.log(e);
       this.resetForm();
-    }
+    }*/
+    UserStore.isLoggedIn = true;
   }
-
+  
   render() {
     return ( 
     <React.Fragment>
       <Form className="loginForm">
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Username</Form.Label>
-          <Form.Control name="username" type="text" placeholder="Username" value={this.state.username ? this.state.username : ''} onChange={(event) => this.setInputValue(event)}/>
+          <Form.Label>Felhasználónév</Form.Label>
+          <Form.Control name="username" type="text" placeholder="Felhasználónév" value={this.state.username ? this.state.username : ''} onChange={(event) => this.setInputValue(event)}/>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control name="password" type="password" placeholder="Password" value={this.state.password ? this.state.password : ''} onChange={(event) => this.setInputValue(event)}/>
+          <Form.Label>Jelszó</Form.Label>
+          <Form.Control name="password" type="password" placeholder="Jelszó" value={this.state.password ? this.state.password : ''} onChange={(event) => this.setInputValue(event)}/>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Stay logged in" />
+          <Form.Check type="checkbox" label="Maradjak bejelentkezve" />
         </Form.Group>
         <Button className="loginButton" variant="primary" type="button" onClick={() => this.doLogIn()}>
-          Login
+          Bejelentkezés
         </Button>
       </Form>
       </React.Fragment>

@@ -5,6 +5,12 @@ import LoginForm from './components/LoginForm';
 import { observer } from 'mobx-react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Sidebar from './components/Sidebar';
+import Home from './pages/Home';
+import Customer from './pages/Customer';
+import Quote from './pages/Quote';
+
 
 class App extends React.Component {
 
@@ -79,23 +85,22 @@ class App extends React.Component {
 
       if(UserStore.isLoggedIn){
         return ( 
-          <div className = "app" >
-            <div className ="container">
-                Welcome {UserStore.username}
-
-              <Button variant="primary" type="button" onClick={() => this.doLogout()}>
-                Logout
-              </Button>
-            </div>
-          </div>
+          <>
+          <Router>
+              <Sidebar />
+              <Switch>
+                <Route path='/' exact component={Home} />
+                <Route path='/Customer' component={Customer} />
+                <Route path='/Quote' component={Quote} />
+              </Switch>
+            </Router>
+            </>
         );
       }
       return ( 
         <div className = "app" >
           <div className='containerforLogin'>
-          
-          <h1> Sign In </h1>
-
+          <h1> Bejelentkezés </h1>
             <LoginForm />
             </div>
         </div>
