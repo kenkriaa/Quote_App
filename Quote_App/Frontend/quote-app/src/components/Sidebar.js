@@ -10,7 +10,7 @@ import UserStore from '../stores/UserStore';
 
 
 async function doLogout() {
-    /*try {
+    try {
       let res = await fetch('/logout', {
         method: 'post',
         headers: {
@@ -28,9 +28,7 @@ async function doLogout() {
 
     } catch (error) {
       console.log(error);
-    }*/
-    UserStore.isLoggedIn = false;
-
+    }
 };
 
 function Sidebar() {

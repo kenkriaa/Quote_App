@@ -10,6 +10,7 @@ import Sidebar from './components/Sidebar';
 import Home from './pages/Home';
 import Customer from './pages/Customer';
 import Quote from './pages/Quote';
+import CustomerRecordPage from './pages/CustomerRecordPage';
 
 
 class App extends React.Component {
@@ -28,7 +29,7 @@ class App extends React.Component {
       });
 
       let result = await res.json();
-      console.log('isLoggedIn result: ' + result);
+      console.log('isLoggedIn result: ' + JSON.stringify(result));
 
       if (result && result.success) {
         UserStore.isLoggedIn = true;
@@ -42,30 +43,6 @@ class App extends React.Component {
     } catch (error) {
       UserStore.loading = false;
       UserStore.isLoggedIn = false;
-    }
-
-  }
-
-  async doLogout() {
-    try {
-
-      let res = await fetch('/logout', {
-        method: 'post',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
-      });
-
-      let result = await res.json();
-
-      if (result && result.success) {
-        UserStore.isLoggedIn = false;
-        UserStore.username = '';
-      }
-
-    } catch (error) {
-      console.log(error);
     }
 
   }
@@ -92,6 +69,7 @@ class App extends React.Component {
                 <Route path='/' exact component={Home} />
                 <Route path='/Customer' component={Customer} />
                 <Route path='/Quote' component={Quote} />
+                <Route path='/CustomerRecordPage/:id' component={CustomerRecordPage} />
               </Switch>
             </Router>
             </>

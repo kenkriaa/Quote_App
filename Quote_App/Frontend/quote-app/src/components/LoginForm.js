@@ -38,7 +38,7 @@ class LoginForm extends React.Component {
 
   async doLogIn(){
     console.log('login');
-    /*if(!this.state.username){
+    if(!this.state.username){
       return;
     }
     if(!this.state.password){
@@ -73,8 +73,7 @@ class LoginForm extends React.Component {
     }catch(e){
       console.log(e);
       this.resetForm();
-    }*/
-    UserStore.isLoggedIn = true;
+    }
   }
   
   render() {
